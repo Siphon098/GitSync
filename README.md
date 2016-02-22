@@ -6,7 +6,8 @@ A batch script to sync and clean multiple repo directories quickly.
 - Edit the file and update the "default" variable to use your directories.
 
 # Usage
-`gitsync [command] [directories] [option]`
+- `gitsync [command] [directories] [option]`
+- Just `gitsync` will prompt you for the arguments one at a time.
 
 ## Commands
 - `master` - Checkout to the master branch.
