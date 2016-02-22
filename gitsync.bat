@@ -39,11 +39,11 @@ exit /b 1
 REM the main script starting point
 :process
 	REM make sure we have a valid command
-    set valid=false
-    if "%command%" == "master" set valid=true
-    if "%command%" == "pull" set valid=true
-    if "%command%" == "prune" set valid=true
-    if "%command%" == "delete" set valid=true
+	set valid=false
+	if "%command%" == "master" set valid=true
+	if "%command%" == "pull" set valid=true
+	if "%command%" == "prune" set valid=true
+	if "%command%" == "delete" set valid=true
 	
 	REM run the valid command
 	if "%valid%" == "true" (
@@ -91,7 +91,7 @@ REM cycle though local branches for deletion
 :delete
 	set dir="%~1"
 	for /F %%b in ('git.exe -C %dir% branch') do (
-	    SETLOCAL EnableDelayedExpansion
+		SETLOCAL EnableDelayedExpansion
 		if not "%%b" == "*" (
 			if not "%%b" == "master" (
 				if "%option%" == "-f" (
