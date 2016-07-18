@@ -15,8 +15,8 @@ if [%1]==[] (
 	set option=%2
 
 	REM handle optional dirs argument
-	if not "%2" == "" (
-		if not "%2:~0,1" == "-" (
+	if not "%option%" == "" (
+		if not "%option:~0,1%" == "-" (
 			set dirs=%2
 			set option=%3
 		)
