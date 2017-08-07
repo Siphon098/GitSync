@@ -6,15 +6,14 @@ A batch script to sync and clean multiple repo directories quickly.
 - Edit the file and update the "default" variable to use your directories.
 
 # Usage
-- `gitsync [command] [directory|branch] [option]`
+- `gitsync [command] [directory] [option]`
 - Arguments cannot contain spaces.
-- Just `gitsync` will prompt you for the arguments one at a time.
 
 ## Commands
 - `checkout` - Checkout the specified branch.
 - `pull`     - Run git pull on the repo.
 - `prune`    - Remove local references to deleted branches on remote.
-- `all`      - Run "checkout [branch]" -> "pull" -> "prune", in this order.
+- `all`      - Run "checkout" -> "pull" -> "prune", in this order.
 - `delete`   - **WARNING! MAY DELETE UNSAVED CHANGES!** Prompt for deletion of local branches. (Always excludes master and the active branch)
 
 ## Options
