@@ -1,5 +1,5 @@
 @echo off
-set "dirs=dir1 dir2 dir3"
+set "default=dir1 dir2 dir3"
 set "command="
 set "dirs="
 set "option="
