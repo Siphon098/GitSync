@@ -3,24 +3,35 @@ set "default=dir1 dir2 dir3"
 set "command="
 set "dirs="
 set "option="
+set "branch="
 
 if [%1]==[] (
-	REM no arguments given, prompt for input
-	set /p "command=Enter command: "
-	set /p "dirs=Enter directories: "
-	set /p "option=Enter option: "
-) else (
-	REM set variables using the arguments
-	set command=%1
-	set option=%2
+	echo Usage: gitsync [command] [directory] [option]
+	echo Website: https://github.com/Siphon098/git-sync-batch
+	exit /b 1
+)
 
-	REM handle optional dirs argument
-	if not "%option%" == "" (
-		if not "%option:~0,1%" == "-" (
-			set dirs=%2
-			set option=%3
+REM set variables using the arguments
+set command=%1
+set option=%2
+
+REM handle optional dirs argument
+if not "%option%" == "" (
+	if "%option%" == "-b" (
+		set branch=%3
+	) else if not "%option:~0,1%" == "-" (
+		REM shift the arguments by 1 to include dirs
+		set dirs=%2
+		set option=%3
+		if "%option%" == "-b" (
+			set branch=%4
 		)
 	)
+)
+
+REM set default branch as master
+if "%branch%" == "" (
+	set branch=master
 )
 
 REM no dirs given, use default
@@ -40,7 +51,7 @@ REM the main script starting point
 :process
 	REM make sure we have a valid command
 	set valid=false
-	if "%command%" == "master" set valid=true
+	if "%command%" == "checkout" set valid=true
 	if "%command%" == "pull" set valid=true
 	if "%command%" == "prune" set valid=true
 	if "%command%" == "delete" set valid=true
@@ -56,7 +67,7 @@ REM the main script starting point
 	REM run the "all" command
 	if "%command%" == "all" (
 		for %%a in (%dirs%) do (
-			call :master %%a
+			call :checkout %%a
 			call :pull %%a
 			call :prune %%a
 		)
@@ -66,11 +77,16 @@ REM the main script starting point
 	echo Invalid command... exiting
 	exit /b 1
 
-REM checkout to master branch
-:master
+REM checkout to specified branch
+:checkout
 	set dir="%~1"
-	echo git.exe -C %dir% checkout master --
-	git.exe -C %dir% checkout master --
+	if "branch" == "" (
+		echo Missing branch option: -b [branch] ... exiting
+		exit /b 1
+	) else (
+		echo git.exe -C %dir% checkout %branch% --
+		git.exe -C %dir% checkout %branch% --
+	)
 	goto :EOF
 
 REM  pull the repo
