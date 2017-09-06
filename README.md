@@ -21,7 +21,7 @@ A batch script to sync and clean multiple repo directories quickly.
 - `-f`          - Force deletion without prompt.
 
 # Examples
-- `gitsync checkout master` - Checkout master for all default directories.
+- `gitsync checkout` - Checkout master for all default directories.
 - `gitsync checkout git_dir -b some_branch` - Checkout some_branch for "git_dir" directory.
 - `gitsync pull` - Pull all default directories.
 - `gitsync prune git_dir` - Prune only "git_dir" directory.
