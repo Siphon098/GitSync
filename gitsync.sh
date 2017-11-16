@@ -52,7 +52,7 @@ command=$1
 # Print Usage
 if [ -z $1 ]; then
     echo Usage: gitsync [command] [directory] [option]
-    echo Website: https://github.com/Siphon098/git-sync-batch
+    echo Website: https://github.com/Siphon098/GitSync
     exit 1
 fi
 

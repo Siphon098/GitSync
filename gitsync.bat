@@ -7,7 +7,7 @@ set "branch="
 
 if [%1]==[] (
 	echo Usage: gitsync [command] [directory] [option]
-	echo Website: https://github.com/Siphon098/git-sync-batch
+	echo Website: https://github.com/Siphon098/GitSync
 	exit /b 1
 )
 
