@@ -1,8 +1,8 @@
-# git-sync-batch
-A batch script to sync and clean multiple repo directories quickly.
+# Git Sync
+Scripts used to sync and clean multiple repo directories quickly.
 
 # Setup
-- Place "gitsync.bat" into the directory containing your repos.
+- Place "gitsync.bat" or "gitsync.sh" into the directory containing your repos.
 - Edit the file and update the "default" variable to use your directories.
 
 # Usage
