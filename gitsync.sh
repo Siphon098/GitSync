@@ -7,17 +7,17 @@ default=("dir1" "dir2" "dir3")
 # Git Commands
 checkout() {
     echo git -C $1 checkout $branch --
-	git -C $1 checkout $branch --
+    git -C $1 checkout $branch --
 }
 
 pull() {
     echo git -C $1 pull origin --
-	git -C $1 pull origin --
+    git -C $1 pull origin --
 }
 
 prune() {
     echo git -C $1 remote prune origin --
-	git -C $1 remote prune origin --
+    git -C $1 remote prune origin --
 }
 
 delete() {
@@ -25,23 +25,23 @@ delete() {
     branches=$(git -C $1 branch | tr '*' ' ')
 
     for br in $branches; do
-	    if [ $br != $current ] && [ "$br" != "master" ]; then
-		    if [ "$option" = "-f" ]; then
-				echo git -C $1 branch -D $br
-				git -C $1 branch -D $br
-			else
-			    printf "Delete $1->$br? (y/n/exit): "
-				read -r confirm
-				if [ "$confirm" = "y" ]; then
-				    echo git -C $1 branch -D $br
-					git -C $1 branch -D $br
-				elif [ "$confirm" = "exit" ]; then
-				    exit 0
-				fi
-		    fi
-		fi
+        if [ $br != $current ] && [ "$br" != "master" ]; then
+            if [ "$option" = "-f" ]; then
+                echo git -C $1 branch -D $br
+                git -C $1 branch -D $br
+            else
+                printf "Delete $1->$br? (y/n/exit): "
+                read -r confirm
+                if [ "$confirm" = "y" ]; then
+                    echo git -C $1 branch -D $br
+                    git -C $1 branch -D $br
+                elif [ "$confirm" = "exit" ]; then
+                    exit 0
+                fi
+            fi
+        fi
     done
-	
+    
 }
 # End Git Commands
 
